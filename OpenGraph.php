@@ -4,7 +4,7 @@
     Plugin URI: http://analteredreality.com/opengraph
     Description: Plugin displays simple open graph data
     Author: K. Bowers
-    Version: 0.1
+    Version: 0.2
     Author URI: http://analteredreality.com
     License: GPL2
     */			
@@ -31,7 +31,7 @@ function opengraph(){
 		global $post;
 		if (is_home()) $title = get_bloginfo('name');
 		elseif
-		(is_single()) $title = $post->post_title;
+		(is_singular()) $title = the_title();
 		echo $title;
 	?>"/>
     <meta property="og:type" content="
@@ -43,7 +43,7 @@ function opengraph(){
     <meta property="og:url" content="
     <?php
 	if (is_home()) $url = home_url();
-	elseif (is_single()) $url= the_permalink();
+	elseif (is_singular()) $url= the_permalink();
 	echo $url
 	?>"/>
     <meta property="og:image" content="
