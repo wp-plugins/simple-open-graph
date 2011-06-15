@@ -5,7 +5,7 @@ Donate link: http://analteredreality.com/say-thanks
 Tags: facebook, open graph
 Requires at least: 2.0.2
 Tested up to: 3.1
-Stable tag: 0.4
+Stable tag: 0.5
 
 This simple plugin adds Facebook's Open Graph meta data to the header
 
@@ -23,15 +23,17 @@ Simple Open Graph adds Facebook's Open Graph meta data to the header. It's simpl
 
 None
 
-== Changelog == 
+== Changelog ==
 
-0.1 - Initial Release
-0.2 - Bug Fixes
-0.3 - Changed handling of empty image and Description
+0.1 Initial Release   
+    
+0.2 Bug Fixes   
+    
+0.3 Changed handling of empty image and Description    
 
 == Upgrade Notice == 
 
-None yet.
+0.3 - All users should update. View Changelog
 
 == Screenshots ==
 

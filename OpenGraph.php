@@ -4,7 +4,7 @@
     Plugin URI: http://analteredreality.com/opengraph
     Description: Plugin displays simple open graph data
     Author: K. Bowers
-    Version: 0.2
+    Version: 0.5
     Author URI: http://analteredreality.com
     License: GPL2
     */			
