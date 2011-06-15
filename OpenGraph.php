@@ -4,11 +4,11 @@
     Plugin URI: http://analteredreality.com/opengraph
     Description: Plugin displays simple open graph data
     Author: K. Bowers
-    Version: 0.2
+    Version: 0.5
     Author URI: http://analteredreality.com
     License: GPL2
     */			
-/*  Copyright 2011  Kevin Bowers  (email : pcfrk256@gmail.com)
+	/*  Copyright 2011  Kevin Bowers  (email : pcfrk256@gmail.com)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License, version 2, as 
@@ -22,7 +22,7 @@
     You should have received a copy of the GNU General Public License
     along with this program; if not, write to the Free Software
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-*/
+	*/
 function opengraph(){
 ?>
     <meta property="og:site_name" content="<?php echo get_bloginfo('name');?>"/>
@@ -46,7 +46,6 @@ function opengraph(){
 	elseif (is_singular()) $url= the_permalink();
 	echo $url
 	?>"/>
-    <meta property="og:image" content="
     <?php
     global $post;
 	if (is_singular() && empty($image) && has_post_thumbnail($post->ID)){
@@ -54,15 +53,21 @@ function opengraph(){
 	if ($thumbnail) {
 		$image = $thumbnail[0];
 	}}
-	echo $image;
-	?>"/>
-    <meta property="og:description" content="
+	if (empty($image))
+	echo "";
+	else
+	echo  '<meta property="og:image" content="'.$image.'"/>';
+	?>
+    
     <?php
     $excerpt = get_the_excerpt();
 	if (is_single()) $description = strip_tags($excerpt);
 	elseif (is_home()) $description = get_bloginfo('description');
-	echo $description;
-	?>"/>
+	if (empty($description))
+	echo "";
+	else
+	echo '<meta property="og:description" content="'.$description.'"/>'
+	?>
 <?php
 };
 add_action('wp_head', 'opengraph');
