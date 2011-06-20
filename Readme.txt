@@ -2,10 +2,10 @@
 
 Contributors: pcfrk256
 Donate link: http://analteredreality.com/say-thanks
-Tags: facebook, open graph
-Requires at least: 2.0.2
+Tags: opengraph, facebook, open graph,
+Requires at least: 2.0
 Tested up to: 3.1
-Stable tag: 0.5
+Stable tag: 1.0
 
 This simple plugin adds Facebook's Open Graph meta data to the header
 
@@ -25,16 +25,23 @@ None
 
 == Changelog ==
 
-0.1 Initial Release   
+= 0.1 =
+*Initial Release   
     
-0.2 Bug Fixes   
+= 0.2 =
+*Bug Fixes   
     
-0.3 Changed handling of empty image and Description    
+= 0.3 =
+*Changed handling of empty image and description    
+
+= 1.0 =
+*Added admin options for Admin IDs, App Id, and fallback og:image
+*Bug Fixes
 
 == Upgrade Notice == 
 
-0.3 - All users should update. View Changelog
+= 0.3 =
+*All users should update. View Changelog.
 
-== Screenshots ==
-
-Look at the page source!
+= 1.0 =
+*All users should update. View Changelog.
