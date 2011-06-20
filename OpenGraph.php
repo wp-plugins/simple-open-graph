@@ -2,9 +2,9 @@
 /*
     Plugin Name: Simple OpenGraph
     Plugin URI: http://analteredreality.com/opengraph
-    Description: Plugin displays simple open graph data
+    Description: Plugin displays simple open graph data in the header
     Author: K. Bowers
-    Version: 0.5
+    Version: 0.6
     Author URI: http://analteredreality.com
     License: GPL2
     */			
