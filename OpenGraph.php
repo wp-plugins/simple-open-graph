@@ -4,7 +4,7 @@
     Plugin URI: http://analteredreality.com/opengraph
     Description: Plugin displays simple open graph data
     Author: K. Bowers
-    Version: 1.0
+    Version: 1.1
     Author URI: http://analteredreality.com
     License: GPL2
 			
@@ -23,103 +23,90 @@
     along with this program; if not, write to the Free Software
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
-?>
-<?php
 /*Include the Options Page*/
 include('simpleopengraph_options.php');
-?>
-<?php
-function opengraph(){
-?>
-<?php
+
 /*Add Site_Name from bloginfo*/
-?>
-<meta property="og:site_name" content="<?php echo get_bloginfo('name');?>"/>
-<?php
-/*
-Add Title Element; If home, then blog name; If page or post, then page/post title
-*/
-?>
-<meta property="og:title" content="<?php if (is_home()) echo get_bloginfo('name'); elseif (is_singular()) echo the_title();?>"/>
-<?php
-/*
-Type = "website" if is_home, otherwise it's "article"
-*/
-?>
-<?php
+function sitename(){
+$site_name = get_bloginfo('name');
+echo '<meta property="og:site_name" content="'.$site_name.'"/>';
+}
+/*Add og:title element */
+function ogtitle(){
+if (is_home()) 
+echo '<meta property="og:title" content="'.get_bloginfo('name').'"/>';
+elseif (is_singular()) 
+echo '<meta property="og:title" content="'.get_the_title().'"/>';
+}
+/*Add og:type element */
+function ogtype(){
 if (is_home())
-echo '<meta property="og:type" content="website"/>';
+$type="website";
 elseif (is_singular())
-echo '<meta property="og:type" content="article"/>';
-?>
-<?php
-/*
-URL is the Home_URL if it's the home page, oterwise it's the permalink
-*/
-?>
-<meta property="og:url" content="<?php if (is_home()) echo home_url(); elseif (is_singular()) echo the_permalink();?>"/>
-<?php
-/*
-fb:admins from admin panel
-*/
-?>
-	<?php
-	global $options;
-	$options = get_option('fbadmin');
-	$fbadmins = $options['fbadmins'];
-	if (is_home() || is_singular()){
+$type = "article";
+echo '<meta property="og:type" content="'.$type.'"/>';
+}
+/*Add og:url element*/
+function ogurl(){
+if (is_home())
+$url = home_url();
+elseif (is_singular())
+$url = get_permalink();
+echo '<meta property="og:url" content="'.$url.'"/>';
+}
+/*Add fb:admins*/
+function fbadmins(){
+global $options;
+$options = get_option('fbadmin');
+$fbadmins = $options['fbadmins'];
+if (empty($fbadmins))
+echo "";
+else
 echo '<meta property="fb:admins" content="'.$fbadmins.'"/>';
-	}
-	?>
-<?php
-/*
-<!-- fb:app_id from admin panel -->
-*/
-?>
-		<?php
-	global $options;
-	$options = get_option('fbappid');
-	$fbapp = $options[fbapp];
-	if (empty($fbapp))
-	echo "";
-	else
-	echo '<meta property="fb:app_id" content="'.$fbapp.'"/>';
-	?>
-<?php
-/*
-Image is post image if the post has one; otherwise its the defined fallback in the admin panel
-*/
-?>
-    <?php
-    global $post;
-    $fallback = get_option('fbimage');
-    $fbimage = $fallback[fallbackimage];
-	if (is_singular() && empty($image) && has_post_thumbnail($post->ID)){
-		$thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'post-thumbnail');
-	if ($thumbnail) {
-		$image = $thumbnail[0];
-	}}
-	if (empty($image))
-	echo '<meta property="og:image" content="'.$fbimage.'"/>';
-	else
-	echo  '<meta property="og:image" content="'.$image.'"/>';
-	?>  
-<?php
-/*	
-The excerpt is pulled from the post excerpt, otherwise it's the blog description
-*/
-?>  
-    <?php
-    $excerpt = get_the_excerpt();
-	if (is_single()) $description = strip_tags($excerpt);
-	elseif (is_home()) $description = get_bloginfo('description');
-	if (empty($description))
-	echo "";
-	else
-	echo '<meta property="og:description" content="'.$description.'"/>'
-	?>
-<?php
-};
+}
+/*Add FB App ID*/
+function fbappid(){
+global $options;
+$options = get_option('fbappid');
+$fbapp = $options['fbapp'];
+if (empty($fbapp))
+echo "";
+else
+echo '<meta property="fb:app_id" content="'.$fbapp.'"/>';
+}
+/*Add Image*/
+function ogimage(){
+global $post;
+$fallback = get_option('fbimage');
+$fbimage = $fallback['fallbackimage'];
+if (is_singular() && empty($image) && has_post_thumbnail($post->ID)){
+$thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'post-thumbnail');
+if ($thumbnail) {
+$image = $thumbnail[0];
+}}
+if (empty($image) && empty($fbimage))
+echo "";
+if (empty($image))
+echo  '<meta property="og:image" content="'.$fbimage.'"/>';
+else
+echo '<meta property="og:image" content="'.$image.'"/>';
+}
+function ogdescription(){    
+$excerpt = get_the_excerpt();
+if (is_single()) $description = strip_tags($excerpt);
+elseif (is_home()) $description = get_bloginfo('description');
+if (empty($description))
+echo "";
+else
+echo '<meta property="og:description" content="'.$description.'"/>';
+}
 /*Adding the action to the header*/
-add_action('wp_head', 'opengraph');
+add_action('wp_head', 'ogtitle');
+add_action('wp_head', 'ogtype');
+add_action('wp_head', 'ogurl');
+add_action('wp_head', 'ogimage');
+add_action('wp_head', 'sitename');
+add_action('wp_head', 'fbadmins');
+add_action('wp_head', 'fbappid');
+add_action('wp_head', 'ogdescription');
 ?>
