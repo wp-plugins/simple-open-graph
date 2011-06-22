@@ -2,10 +2,10 @@
 
 Contributors: PcFrk256
 Donate link: http://analteredreality.com/say-thanks
-Tags: opengraph, facebook, open graph,
+Tags: open graph, opengraph, facebook
 Requires at least: 2.0
 Tested up to: 3.1.3
-Stable tag: 1.1
+Stable tag: 1.2
 
 This simple plugin adds Facebook's Open Graph meta data to the header
 
@@ -41,6 +41,9 @@ None
 = 1.1 =
 * Complete re-write  
 * Bug Fixes  
+
+= 1.2 = 
+* Fixed Jetpack stats issue
 
 == Upgrade Notice == 
 
