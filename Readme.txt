@@ -5,7 +5,7 @@ Donate link: http://analteredreality.com/say-thanks
 Tags: open graph, opengraph, facebook
 Requires at least: 2.0
 Tested up to: 3.1.3
-Stable tag: 1.2
+Stable tag: 2.0
 
 This simple plugin adds Facebook's Open Graph meta data to the header
 
@@ -43,7 +43,11 @@ None
 * Bug Fixes  
 
 = 1.2 = 
-* Fixed Jetpack stats issue
+* Fixed Jetpack stats issue  
+
+= 2.0 =
+*Fixed fallback issue  
+*HTML outback on separate lines  
 
 == Upgrade Notice == 
 
@@ -54,4 +58,7 @@ None
 *All users should update. View Changelog.
 
 =1.1=
+*All users should update. View Changelog.
+
+=2.0=
 *All users should update. View Changelog.
