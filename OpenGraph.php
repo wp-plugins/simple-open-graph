@@ -4,7 +4,7 @@
     Plugin URI: http://analteredreality.com/opengraph
     Description: Plugin displays simple open graph data
     Author: K. Bowers
-    Version: 1.4
+    Version: 2.0
     Author URI: http://analteredreality.com
     License: GPL2
 
@@ -25,22 +25,19 @@
 
 /*Include the Options Page*/
 include('simpleopengraph_options.php');
-/*
-Define the fb:app_id
-*/
 ?>
 <?php
 /*Add Site_Name from bloginfo*/
 function sitename(){
 	$site_name = get_bloginfo('name');
-	echo '<meta property="og:site_name" content="'.$site_name.'"/>';
+	echo '<meta property="og:site_name" content="'.$site_name.'"/>'.PHP_EOL;
 }
 /*Add og:title element */
 function ogtitle(){
 	if (is_home())
-		echo '<meta property="og:title" content="'.get_bloginfo('name').'"/>';
+		echo '<meta property="og:title" content="'.get_bloginfo('name').'"/>'.PHP_EOL;
 	elseif (is_singular())
-		echo '<meta property="og:title" content="'.get_the_title().'"/>';
+		echo '<meta property="og:title" content="'.get_the_title().'"/>'.PHP_EOL;
 }
 /*Add og:type element */
 function ogtype(){
@@ -48,7 +45,7 @@ function ogtype(){
 		$ogtype="website";
 	elseif (is_singular())
 		$ogtype = "article";
-	echo '<meta property="og:type" content="'.$ogtype.'"/>';
+	echo '<meta property="og:type" content="'.$ogtype.'"/>'.PHP_EOL;
 }
 /*Add og:url element*/
 function ogurl(){
@@ -56,7 +53,7 @@ function ogurl(){
 		$url = home_url();
 	elseif (is_singular())
 		$url = get_permalink();
-	echo '<meta property="og:url" content="'.$url.'"/>';
+	echo '<meta property="og:url" content="'.$url.'"/>'.PHP_EOL;
 }
 /*Add fb:admins*/
 function fbadmins(){
@@ -66,7 +63,7 @@ function fbadmins(){
 	if (empty($fbadmins))
 		echo "";
 	else
-		echo '<meta property="fb:admins" content="'.$fbadmins.'"/>';
+		echo '<meta property="fb:admins" content="'.$fbadmins.'"/>'.PHP_EOL;
 }
 /*Add FB App ID*/
 function fbappid(){
@@ -76,7 +73,7 @@ function fbappid(){
 	if (empty($fbapp))
 		echo "";
 	else
-		echo '<meta property="fb:app_id" content="'.$fbapp.'"/>';
+		echo '<meta property="fb:app_id" content="'.$fbapp.'"/>'.PHP_EOL;
 }
 /*Add Image*/
 function ogimage(){
@@ -88,13 +85,14 @@ function ogimage(){
 		if ($thumbnail) {
 			$image = $thumbnail[0];
 		}}
-	if (empty($image) && empty($fbimage))
+	if (empty($fbimage) && empty($image))
 		echo "";
-	if (empty($image))
-		echo  '<meta property="og:image" content="'.$fbimage.'"/>';
+	elseif (empty($image))
+		echo  '<meta property="og:image" content="'.$fbimage.'"/>'.PHP_EOL;
 	else
-		echo '<meta property="og:image" content="'.$image.'"/>';
-}
+		echo '<meta property="og:image" content="'.$image.'"/>'.PHP_EOL;
+	}
+/*Add Description */
 function ogdescription(){
 	$excerpt = get_the_excerpt();
 	if (is_single()) $description = strip_tags($excerpt);
@@ -102,13 +100,15 @@ function ogdescription(){
 	if (empty($description))
 		echo "";
 	else
-		echo '<meta property="og:description" content="'.$description.'"/>';
+		echo '<meta property="og:description" content="'.$description.'"/>'.PHP_EOL;
 }
 /*Adding the action to the header*/
+add_action('wp_head','ogtitle');
+add_action('wp_head','ogtype');
+add_action('wp_head','ogurl');
 add_action('wp_head','ogimage');
+add_action('wp_head','sitename');
 add_action('wp_head','fbappid');
 add_action('wp_head','fbadmins');
-add_action('wp_head','ogurl');
-add_action('wp_head','ogtype');
-add_action('wp_head','ogtitle');
+add_action('wp_head','ogdescription');
 ?>
