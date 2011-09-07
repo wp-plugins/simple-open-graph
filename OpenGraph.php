@@ -4,7 +4,7 @@
     Plugin URI: http://analteredreality.com/opengraph
     Description: Plugin displays simple open graph data
     Author: K. Bowers
-    Version: 2.1
+    Version: 2.2
     Author URI: http://analteredreality.com
     License: GPL2
 
@@ -37,7 +37,7 @@ function ogtitle(){
 	if (is_home())
 		echo '<meta property="og:title" content="'.get_bloginfo('name').'"/>'.PHP_EOL;
 	elseif (is_singular())
-		echo '<meta property="og:title" content="'.get_the_title().'"/>'.PHP_EOL;
+		echo'<meta property="og:title" content="'.get_the_title().'"/>'.PHP_EOL;
 }
 /*Add og:type element */
 function ogtype(){
@@ -64,6 +64,16 @@ function fbadmins(){
 		echo "";
 	else
 		echo '<meta property="fb:admins" content="'.$fbadmins.'"/>'.PHP_EOL;
+}
+/*Add fb:pageid*/
+function pageid(){
+	global $options;
+	$options = get_option('fbpageid');
+	$fbpage = $options['fbpageid'];
+	if (empty($fbpage))
+		echo "";
+	else
+		echo '<meta property="fb:page_id" content="'.$fbpage.'"/>'.PHP_EOL;
 }
 /*Add FB App ID*/
 function fbappid(){
@@ -110,5 +120,6 @@ add_action('wp_head','ogimage');
 add_action('wp_head','sitename');
 add_action('wp_head','fbappid');
 add_action('wp_head','fbadmins');
+add_action('wp_head','pageid');
 add_action('wp_head','ogdescription');
 ?>

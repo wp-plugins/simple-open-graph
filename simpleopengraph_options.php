@@ -27,8 +27,10 @@ function admin_init_simpleopengraph(){
 register_setting( 'plugin_options', 'fbadmin');
 register_setting('plugin_options', 'fbimage');
 register_setting('plugin_options', 'fbappid');
+register_setting('plugin_options', 'fbpageid');
 add_settings_section('plugin_main', 'Main Settings', 'simpleopengraph_text', 'simpleopengraph');
 add_settings_field('fbadmins', 'FB Admins (comma separated):', 'fbadmin', 'simpleopengraph', 'plugin_main');
+add_settings_field('fbpageid','FB Page ID:','fbpageid','simpleopengraph','plugin_main');
 add_settings_field('fbapp', 'FB App ID:', 'fbapp', 'simpleopengraph', 'plugin_main');
 add_settings_field('fallbackimage', 'Fallback Image URL (50px X 50px):', 'fallback_url', 'simpleopengraph', 'plugin_main');
 }?>
@@ -46,6 +48,14 @@ echo "<input id='fbadmins' name='fbadmin[fbadmins]' size='40' type='text' value=
 $fbadmins = $options['fbadmins'];
 echo "Current Value: ";
 echo $fbadmins;
+}
+?>
+<?php function fbpageid() {
+$options = get_option('fbpageid');
+echo "<input id='fbpageid' name='fbpageid[fbpageid]' size='40' type='text' value='{$options['fbpageid']}' /><br>";
+$fbpageid = $options['fbpageid'];
+echo "Current Value: ";
+echo $fbpageid;
 }
 ?>
 <?php
