@@ -113,13 +113,10 @@ function ogdescription(){
 		echo '<meta property="og:description" content="'.$description.'"/>'.PHP_EOL;
 }
 /*Adding the action to the header*/
-add_action('wp_head','ogtitle');
-add_action('wp_head','ogtype');
-add_action('wp_head','ogurl');
-add_action('wp_head','ogimage');
-add_action('wp_head','sitename');
-add_action('wp_head','fbappid');
-add_action('wp_head','fbadmins');
-add_action('wp_head','pageid');
-add_action('wp_head','ogdescription');
+$functions = array("ogtitle","ogtype","ogurl","ogimage","sitename","fbappid","fbadmins","pageid","ogdescription");
+reset($functions);
+while (list($key,$val) = each($functions))
+{
+add_action('wp_head',$val);
+}
 ?>
