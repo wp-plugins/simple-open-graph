@@ -6,7 +6,7 @@ Tags: open graph, opengraph, facebook
 Requires at least: 3.0
 Tested up to: 4.1
 Stable tag: 2.3
-
+License: GPLv2 or Later
 This simple plugin adds Facebook's Open Graph meta data to the header
 
 == Description ==
