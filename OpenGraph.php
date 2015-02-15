@@ -1,6 +1,6 @@
 <?php
 /*
-    Plugin Name: Simple OpenGraph
+    Plugin Name: Simple Open Graph
     Plugin URI: http://analteredreality.com/opengraph
     Description: Plugin displays simple open graph data
     Author: K. Bowers
