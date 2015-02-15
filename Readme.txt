@@ -71,3 +71,6 @@ None
 
 =2.1=
 *All users should update. View Changelog.
+
+=2.3=
+* A little bit of cleanup in OpenGraph.php; Updated version compatibility
