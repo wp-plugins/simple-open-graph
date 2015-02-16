@@ -6,7 +6,7 @@ Tags: open graph, opengraph, facebook
 Requires at least: 3.0
 Tested up to: 4.1
 Stable tag: 2.3
-License: GPLv2 or Later
+
 This simple plugin adds Facebook's Open Graph meta data to the header
 
 == Description ==
@@ -26,36 +26,36 @@ None
 == Changelog ==
 
 = 0.1 =
-* Initial Release
-
+* Initial Release   
+    
 = 0.2 =
-* Bug Fixes
-
+* Bug Fixes   
+    
 = 0.3 =
-* Changed handling of empty image and description
+* Changed handling of empty image and description    
 
 = 1.0 =
 * Added admin options for Admin IDs, App Id, and fallback og:image
 * Bug Fixes
 
 = 1.1 =
-* Complete re-write
-* Bug Fixes
+* Complete re-write  
+* Bug Fixes  
 
-= 1.2 =
-* Fixed Jetpack stats issue
+= 1.2 = 
+* Fixed Jetpack stats issue  
 
 = 2.0 =
-* Fixed fallback issue
-* HTML outback on separate lines
+* Fixed fallback issue  
+* HTML outback on separate lines  
 
 = 2.2 =
-* Added FB_PageID Option
+* Added FB_PageID Option  
 
 = 2.3 =
 * A little bit of cleanup in OpenGraph.php, updating version compatibility
 
-== Upgrade Notice ==
+== Upgrade Notice == 
 
 = 0.3 =
 *All users should update. View Changelog.
@@ -71,6 +71,3 @@ None
 
 =2.1=
 *All users should update. View Changelog.
-
-=2.3=
-* A little bit of cleanup in OpenGraph.php; Updated version compatibility
