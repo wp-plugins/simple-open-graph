@@ -16,9 +16,9 @@ jQuery(document).ready(function($){
  
         //Extend the wp.media object
         custom_uploader = wp.media.frames.file_frame = wp.media({
-            title: 'Media Library',
+            title: 'Upload Files',
             button: {
-                text: 'Select'
+                text: 'Insert'
             },
             multiple: false
         });
