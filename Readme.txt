@@ -2,20 +2,20 @@
 
 Contributors: PcFrk256
 Donate link: http://analteredreality.com/say-thanks
-Tags: open graph, opengraph, facebook
+Tags: open graph, opengraph, facebook, ogp, metadata
 Requires at least: 3.0
 Tested up to: 4.1
-Stable tag: 2.3
+Stable tag: 2.4
 
-This simple plugin adds Facebook's Open Graph meta data to the header
+Simple Open Graph adds Open Graph meta data to the header
 
 == Description ==
 
-Simple Open Graph adds Facebook's Open Graph meta data to the header. It's simple. Activate it and forget about it.
+Simple Open Graph adds Open Graph meta data to the header. It's simple. Activate it and forget about it.
 
 == Installation ==
 
-1. Upload `simple_opengraph.zip` to the `/wp-content/plugins/` directory
+1. Upload `simple-open-graph.2.3.zip` to the `/wp-content/plugins/` directory and unzip
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Relax
 
@@ -71,3 +71,6 @@ None
 
 =2.1=
 *All users should update. View Changelog.
+
+=2.4=
+*I've added several new features and some under-the-hood improvements. Check out http://bit.ly/1vdapey for all the details.

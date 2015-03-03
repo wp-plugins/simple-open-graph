@@ -2,7 +2,7 @@
 //add the admin options page
 add_action('admin_menu', 'add_simplegraph_page');
 function add_simplegraph_page() {
-	add_options_page('Simple Open Graph', 'Open Graph Settings', 'manage_options', 'simpleopengraph', 'simple_open_graph_page');
+	add_options_page('Simple Open Graph', 'Open Graph', 'manage_options', 'simpleopengraph', 'simple_open_graph_page');
 }
 ?>
 <?php
@@ -26,21 +26,39 @@ function admin_init_simpleopengraph(){
 	register_setting('plugin_options', 'fbimage');
 	register_setting('plugin_options', 'fbappid');
 	register_setting('plugin_options', 'fbpageid');
+	register_setting('plugin_options', 'ogtype');
+	register_setting('plugin_options', 'ogdescription');
 	add_settings_section('plugin_main', 'Main Settings', 'simpleopengraph_text', 'simpleopengraph');
-	add_settings_field('fbadmins', 'FB Admins (comma separated):', 'fbadmin', 'simpleopengraph', 'plugin_main');
+	add_settings_field('default_ogtype', 'Default OG:Type:', 'default_ogtype', 'simpleopengraph', 'plugin_main');
+	add_settings_field('default_ogdescription', 'Default OG:Description:', 'default_ogdescription', 'simpleopengraph', 'plugin_main');
+	add_settings_field('fallbackimage', 'Default OG:Image URL:', 'fallback_url', 'simpleopengraph', 'plugin_main');
+	add_settings_field('fbadmins', 'FB Admins:', 'fbadmin', 'simpleopengraph', 'plugin_main');
 	add_settings_field('fbpageid','FB Page ID:','fbpageid','simpleopengraph','plugin_main');
 	add_settings_field('fbapp', 'FB App ID:', 'fbapp', 'simpleopengraph', 'plugin_main');
-	add_settings_field('fallbackimage', 'Fallback Image URL:', 'fallback_url', 'simpleopengraph', 'plugin_main');
+	
 }?>
 <?php function simpleopengraph_text() {
-	echo '<p>Edit the fallback options below.</p>';
+	echo '<p>Edit the default options below:</p>';
 } ?>
+<?php
+function default_ogtype() {
+	$options = get_option('ogtype');
+	echo "<input id='ogtype' name='ogtype[ogtype]' size='40' type='text' value='{$options['ogtype']}' /><br>";
+	$ogtype = $options['ogtype'];
+}
+?>
+<?php
+function default_ogdescription() {
+	$options = get_option('ogdescription');
+	echo "<input id='ogdescription' name='ogdescription[ogdescription]' size='40' type='text' value='{$options['ogdescription']}' /><br>";
+	$ogdescription = $options['ogdescription'];
+}
+?>
 <?php
 /*
 Define the fbadmin value.
 */
-?>
-<?php function fbadmin() {
+function fbadmin() {
 	$options = get_option('fbadmin');
 	echo "<input id='fbadmins' name='fbadmin[fbadmins]' size='40' type='text' value='{$options['fbadmins']}' /><br>";
 	$fbadmins = $options['fbadmins'];
@@ -72,7 +90,7 @@ Define the og:image fallback
 	$fallback = get_option('fbimage');
 ?>
 <label for="upload_image">
-<input id="fallbackimage" name="fbimage[fallbackimage]" type="text" size="36" name="ad_image" value="<?php echo $fallback['fallbackimage'];?>" />
+<input id="fallbackimage" name="fbimage[fallbackimage]" type="text" size="40" name="ad_image" value="<?php echo $fallback['fallbackimage'];?>" />
 <input id="upload_image_button" class="button" type="button" value="Upload Image" />
 </label>
 <?php
