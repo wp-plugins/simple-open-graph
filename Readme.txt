@@ -55,6 +55,9 @@ None
 = 2.3 =
 * A little bit of cleanup in OpenGraph.php, updating version compatibility
 
+=2.4=
+*I've added several new features and some under-the-hood improvements. Check out http://bit.ly/1vdapey for all the details.
+
 == Upgrade Notice == 
 
 = 0.3 =
